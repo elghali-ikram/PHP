@@ -161,30 +161,44 @@
     </div>
   </div>
   <?php 
-    $body = print_r($_POST, true);
+    $body = print_r($_POST, true); 
     $count = 0;
     $array1 = array();
     foreach ($_POST as $key => $value) {
       global $count,$array1;
       if(!empty($value))
       {
-        array_push($array1,"$key => $value" );
+        $array1["$key"]="$value";
+        // array_push($array1["$key"], );
          $count++;    
-         echo substr($key, -1)."</br>";
-         echo $key . $value."</br>" ;
       }
     }
-    for ($i=0; $i < count($array1)-1 ; $i+=5) {
-    echo $array1[$i]."</br>";
-    echo $array1[$i+1];
+  $valuesd = array_values($array1);
+  $keysd = array_keys($array1);
+    // foreach ($array1 as $key => $value) {
+    //   echo $value;
+    //   # code...
+    // }
+    for ($i=0; $i < count($valuesd)-1 ; $i+=2) {
+      echo $valuesd[$i];
+      echo $valuesd[$i+1];
+      if ($valuesd[$i] > $valuesd[$i+1]) {
+         echo "sah";
+        # code...
+      }
+    // foreach ($array1[$i] as $key => $value) {
+    //   echo $key;
+    //   # code...
+    // }
+  }
  
-      // foreach ($array1[$i] as $key => $value) {
-      //   foreach ($array1[$i+1] as $x => $y) {
-      //     # code...
-      //   }
-
-      // }
-    }
+/*       foreach ($array1[$i] as $key => $value) {
+        foreach ($array1[$i+1] as $x => $y) {
+          echo $key."</br>";
+          echo $x."</br>";
+          # code...
+        }
+      } */
 
 
 
