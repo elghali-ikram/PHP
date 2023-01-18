@@ -161,54 +161,94 @@
     </div>
   </div>
   <?php
-
   function getdata()
   {
-    $count = 0;
     $array1 = array();
     foreach ($_POST as $key => $value) {
-      global $count, $array1;
-      if (!empty($value)) {
+      if (!empty($value) || $value==0) {
         $array1["$key"] = "$value";
-        // array_push($array1["$key"], );
-        $count++;
       }
     }
+    echo "<pre>";
+    print_r($array1);
+    echo "</pre>";
     $valuesd = array_values($array1);
     $keysd = array_keys($array1);
     $standings = array();
     $table1 = array();
-
-    foreach ($keysd as $team) {
-      $standings[$team] = array("points" => 0, "goals" => 0);
+    for ($i=0; $i <count($keysd) ; $i++) {
+      array_push($table1, substr($keysd[$i], 0, -1));
+    }
+    print_r($table1)."</br>";
+    foreach ($table1 as $team) {
+      $standings[$team] = array("name"=>"","points" => 0, "goals" => 0, "match" => 0, "wins" => 0, "draws" => 0, "loses" => 0, "goals_in" => 0, "+/-" =>0);
     }
     for ($i = 0; $i < count($valuesd) - 1; $i += 2) {
-      echo $valuesd[$i];
-      echo $valuesd[$i + 1];
+      echo substr($keysd[$i], 0 , -1);
+      echo substr($keysd[$i+1], 0 , -1);
       if ($valuesd[$i] > $valuesd[$i + 1]) {
-        $standings[$keysd[$i]]["points"] += 3;
-        $standings[$keysd[$i]]["goals"] += $valuesd[$i];        
-        $standings[$keysd[$i+1]]["goals"] += $valuesd[$i+1];
-        echo "sah";
-        # code...
+        echo "kbar";
+        $standings[substr($keysd[$i], 0 , -1)]["points"] += 3;
+        $standings[substr($keysd[$i], 0 , -1)]["goals"] += $valuesd[$i];        
+        $standings[substr($keysd[$i+1], 0 , -1)]["goals"] += $valuesd[$i+1];
+        $standings[substr($keysd[$i], 0 , -1)]["match"] += 1;
+        $standings[substr($keysd[$i+1], 0 , -1)]["match"] += 1;
+        $standings[substr($keysd[$i], 0 , -1)]["wins"] += 1;
+        $standings[substr($keysd[$i+1], 0 , -1)]["loses"] += 1;
+        $standings[substr($keysd[$i+1], 0 , -1)]["goals_in"] += $valuesd[$i];
+        $standings[substr($keysd[$i], 0 , -1)]["goals_in"] += $valuesd[$i+1];
       }
       elseif($valuesd[$i] < $valuesd[$i+1])
       {
-        $standings[$keysd[$i+1]]["points"] += 3;
-        $standings[$keysd[$i+1]]["goals"] += $valuesd[$i+1];
-        $standings[$keysd[$i]]["goals"] += $valuesd[$i];        
-       echo "dkhel";
+        echo "sghar";
+        $standings[substr($keysd[$i+1], 0 , -1)]["points"] += 3;
+        $standings[substr($keysd[$i+1], 0 , -1)]["goals"] += $valuesd[$i+1];
+        $standings[substr($keysd[$i], 0 , -1)]["goals"] += $valuesd[$i]; 
+        $standings[substr($keysd[$i], 0 , -1)]["match"] += 1;
+        $standings[substr($keysd[$i+1], 0 , -1)]["match"] += 1; 
+        $standings[substr($keysd[$i+1], 0 , -1)]["wins"] += 1;
+        $standings[substr($keysd[$i], 0 , -1)]["loses"] += 1;
+        $standings[substr($keysd[$i+1], 0 , -1)]["goals_in"] += $valuesd[$i];
+        $standings[substr($keysd[$i], 0 , -1)]["goals_in"] += $valuesd[$i+1];  
       }
       elseif($valuesd[$i] == $valuesd[$i+1])
       {
-        $standings[$keysd[$i+1]]["points"] +=1;
-        $standings[$keysd[$i]]["points"] +=1;
-        $standings[$keysd[$i+1]]["goals"] += $valuesd[$i];
-        $standings[$keysd[$i]]["goals"] += $valuesd[$i+1];
-      }
-    }
+        $standings[substr($keysd[$i+1], 0 , -1)]["points"] +=1;
+        $standings[substr($keysd[$i], 0 , -1)]["points"] +=1;
+        $standings[substr($keysd[$i+1], 0 , -1)]["goals"] += $valuesd[$i];
+        $standings[substr($keysd[$i], 0 , -1)]["goals"] += $valuesd[$i+1];
+        $standings[substr($keysd[$i], 0 , -1)]["match"] += 1;
+        $standings[substr($keysd[$i+1], 0 , -1)]["match"] += 1;
+        $standings[substr($keysd[$i], 0 , -1)]["draws"] += 1;
+        $standings[substr($keysd[$i+1], 0 , -1)]["draws"] += 1;
+        $standings[substr($keysd[$i+1], 0 , -1)]["goals_in"] += $valuesd[$i];
+        $standings[substr($keysd[$i], 0 , -1)]["goals_in"] += $valuesd[$i+1]; 
+      }     
+      $standings[substr($keysd[$i], 0, -1)]["name"] =substr($keysd[$i], 0, -1); 
+      $standings[substr($keysd[$i+1], 0, -1)]["name"] =substr($keysd[$i+1], 0, -1);       
+      $standings[substr($keysd[$i], 0, -1)]["+/-"] = $standings[substr($keysd[$i], 0, -1)]["goals"] - $standings[substr($keysd[$i], 0, -1)]["goals_in"];       
+      $standings[substr($keysd[$i+1], 0, -1)]["+/-"] = $standings[substr($keysd[$i+1], 0, -1)]["goals"] - $standings[substr($keysd[$i+1], 0, -1)]["goals_in"];       
 
-    print_r($standings) ;
+    }
+    echo "<pre>";
+            print_r($standings);
+    echo "</pre>";
+    uasort($standings, function ($a, $b) {
+      if ($a['points'] === $b['points']) {
+        if ($a['+/-'] === $b['+/-']) {
+            if ($a['goals'] === $b['goals']) {
+                return 0;
+            }
+            return ($a['goals'] > $b['goals']) ? -1 : 1;
+        }
+        return ($a['+/-'] > $b['+/-']) ? -1 : 1;
+    }
+    return ($a['points'] > $b['points']) ? -1 : 1;
+  });
+
+  echo "<pre>";
+  print_r($standings);
+  echo "</pre>";
     // $keyteam = array_keys($standings);
     // for ($i=0; $i < count($keyteam)-1 ; $i++) {
     //   for ($j=$i+1; $j <count($keyteam); $j++) { 
@@ -217,7 +257,6 @@
     //     echo $key1 . "  " . $key2."</br>";
     //     if($key1==$key2)
     //     {
-
     //       echo $standings[$keyteam[$i]]["goals"];
     //       echo $standings[$keyteam[$j]]["goals"];
     //       array_push($table1, $key1);
