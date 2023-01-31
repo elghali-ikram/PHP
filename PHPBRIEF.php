@@ -21,14 +21,14 @@
             </div>
             <div class="card-body d-flex">
               <div class=" d-flex gap-4">
-                <img src="images.jfif" class="rounded-circle" width="40px" height="40px">
+                <img src="photo/images.jfif" class="rounded-circle" width="40px" height="40px">
                 <label class="align-self-center">Morrocco</label>
                 <input type="number" class="form-control" name="morroco1" id="morroco1" value="<?php if (isset($_POST['morroco1'])) echo $_POST['morroco1']; ?>">
               </div>
               <div class=" d-flex gap-4">
                 <input type="number" class="form-control" name="croatia1" id="croatia1" value="<?php if (isset($_POST['croatia1'])) echo $_POST['croatia1']; ?>">
                 <label class="align-self-center">Croatia</label>
-                <img src="croatia.png" class="rounded-circle" width="40px" height="40px">
+                <img src="photo/croatia.png" class="rounded-circle" width="40px" height="40px">
               </div>
             </div>
           </div>
@@ -38,14 +38,14 @@
             </div>
             <div class="card-body d-flex">
               <div class="d-flex gap-4">
-                <img src="belgique.png" class="rounded-circle" width="40px" height="40px">
+                <img src="photo/belgique.png" class="rounded-circle" width="40px" height="40px">
                 <label class="align-self-center">Belgique</label>
                 <input type="number" class="form-control" name="belgique1" id="belgique1" value="<?php if (isset($_POST['belgique1'])) echo $_POST['belgique1']; ?>">
               </div>
               <div class=" d-flex gap-4">
                 <input type="number" class="form-control" name="canada1" id="canada1" value="<?php if (isset($_POST['canada1'])) echo $_POST['canada1']; ?>">
                 <label class="align-self-center">Canada</label>
-                <img src="canada.jfif" class="rounded-circle" width="40px" height="40px">
+                <img src="photo/canada.jfif" class="rounded-circle" width="40px" height="40px">
 
               </div>
             </div>
@@ -56,14 +56,14 @@
             </div>
             <div class="card-body d-flex">
               <div class=" d-flex gap-4">
-                <img src="belgique.png" class="rounded-circle" width="40px" height="40px">
+                <img src="photo/belgique.png" class="rounded-circle" width="40px" height="40px">
                 <label class="align-self-center">Belgique</label>
                 <input type="number" class="form-control" name="belgique2" id="belgique2" value="<?php if (isset($_POST['belgique2'])) echo $_POST['belgique2']; ?>">
               </div>
               <div class=" d-flex gap-4">
                 <input type="number" class="form-control" name="morroco2" id="morroco2" value="<?php if (isset($_POST['morroco2'])) echo $_POST['morroco2']; ?>">
                 <label class="align-self-center">Morrocco</label>
-                <img src="images.jfif" class="rounded-circle" width="40px" height="40px">
+                <img src="photo/images.jfif" class="rounded-circle" width="40px" height="40px">
               </div>
             </div>
           </div>
@@ -75,14 +75,14 @@
             </div>
             <div class="card-body d-flex">
               <div class=" d-flex gap-4">
-                <img src="croatia.png" class="rounded-circle" width="40px" height="40px">
+                <img src="photo/croatia.png" class="rounded-circle" width="40px" height="40px">
                 <label class="align-self-center">Croatia</label>
                 <input type="number" class="form-control" name="croatia2" id="croatia2" value="<?php if (isset($_POST['croatia2'])) echo $_POST['croatia2']; ?>">
               </div>
               <div class=" d-flex gap-4">
                 <input type="number" class="form-control" name="canada2" id="canada2" value="<?php if (isset($_POST['canada2'])) echo $_POST['canada2']; ?>">
                 <label class="align-self-center">Canada</label>
-                <img src="canada.jfif" class="rounded-circle" width="40px" height="40px">
+                <img src="photo/canada.jfif" class="rounded-circle" width="40px" height="40px">
               </div>
             </div>
           </div>
@@ -92,14 +92,14 @@
             </div>
             <div class="card-body d-flex">
               <div class=" d-flex gap-4">
-                <img src="croatia.png" class="rounded-circle" width="40px" height="40px">
+                <img src="photo/croatia.png" class="rounded-circle" width="40px" height="40px">
                 <label class="align-self-center">Croatia</label>
                 <input type="number" class="form-control" name="croatia3" id="croatia3" value="<?php if (isset($_POST['croatia3'])) echo $_POST['croatia3']; ?>">
               </div>
               <div class=" d-flex gap-4">
                 <input type="number" class="form-control" name="belgique3" id="belgique3" value="<?php if (isset($_POST['belgique3'])) echo $_POST['belgique3']; ?>">
                 <label class="align-self-center">Belgique</label>
-                <img src="belgique.png" class="rounded-circle" width="40px" height="40px">
+                <img src="photo/belgique.png" class="rounded-circle" width="40px" height="40px">
               </div>
             </div>
 
@@ -110,14 +110,14 @@
             </div>
             <div class="card-body d-flex">
               <div class=" d-flex gap-4">
-                <img src="canada.jfif" class="rounded-circle" width="40px" height="40px">
+                <img src="photo/canada.jfif" class="rounded-circle" width="40px" height="40px">
                 <label class="align-self-center">Canada</label>
                 <input type="number" class="form-control" name="canada3" id="canada3" value="<?php if (isset($_POST['canada3'])) echo $_POST['canada3']; ?>">
               </div>
               <div class=" d-flex gap-4">
                 <input type="number" class="form-control" name="morroco3" id="morroco3" value="<?php if (isset($_POST['morroco3'])) echo $_POST['morroco3']; ?>">
                 <label class="align-self-center">Morrocco</label>
-                <img src="images.jfif" class="rounded-circle" width="40px" height="40px">
+                <img src="photo/images.jfif" class="rounded-circle" width="40px" height="40px">
               </div>
             </div>
           </div>
